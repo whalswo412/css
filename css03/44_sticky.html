@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포지션 sticky</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+        .red-box {
+            background-color: red;
+        }
+        .green-box {
+            background-color: green;
+            position: sticky; /* sticky - 스크롤 하는 중에 일정 지점이 되면 fixed처럼 고정된다. */
+            /*left: 100px; /* left - 왼쪽으로부터 오른쪽으로 100px 이동 */
+            top: 0px; /* top: 0 - green-box top 0 이 되는 지점에서 고정된다.(임계점) */
+        }
+        .blue-box {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box red-box"></div>
+    <div class="box green-box"></div>
+    <div class="box blue-box"></div>
+    <h4>포지션 sticky</h4>
+    <p>
+        1.  
+    </p>
+</body>
+</html>
