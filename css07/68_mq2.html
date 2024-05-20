@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어쿼리</title>
+    <style>
+        body {
+            /* 배경 이미지 설정 - 반복없이 고정 
+               - background : url(이미지경로) 이미지반복 여백처리
+               - background-image : 이미지경로만 지정
+               - fixed 스크롤 고정 */
+            background: url(../images/bg1.png) no-repeat fixed;
+            background-size: cover; /* 화면에 꽉 차도록 배경 이미지 크기 조절 */
+        }
+        
+        /* 미디어 쿼리 */
+        @media screen and (max-width: 1024px) { /* 화면 너비가 1024px 이하일 때 */
+            body {
+                background: url(../images/bg2.png) no-repeat fixed;
+                background-size: cover;
+            }
+        }
+
+        @media screen and (max-width: 768px) { /* 화면 너비가 768px 이하일때 */
+            body {
+                background: url(../images/bg3.png) no-repeat fixed;
+                background-size: cover;
+            }
+        }
+        
+        @media screen and (max-width: 320px) { /* 화면 너비가 320px 이하일 때 */
+            body {
+                background: url(../images/bg4.png) no-repeat fixed;
+                background-size: cover;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>미디어쿼리를 통한 배경이미지 변경</h2>
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Column CSS Grid Layout</title>
+    <!-- Font Awesome CSS 파일 포함 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS 파일 포함 -->
+    <!-- <link rel="stylesheet" href="./styles12.css"> -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* 그리드 컨테이너 설정 */
+        .grid-container {
+            display: grid;  /* 그리드 컨테이너 설정 */
+            grid-template-areas: /* 그리드 영역 설정, header, main들은 12개의 컬럼을 차지 */
+                "header header header header header header header header header header header header"
+                "slide slide slide slide slide slide slide slide slide slide slide slide"
+                "main main main main main main aside aside aside aside aside aside"
+                "footer footer footer footer footer footer footer footer footer footer footer footer";
+            grid-template-columns: repeat(12, 1fr); /* 12개의 동일한 너비를 가진 컬럼 생성 */            
+            grid-template-rows: 100px 300px 1fr 100px;    /* 로우의 높이를 100 300 자동(1fr) 100 */
+            gap: 10px;  /* 컬럼(그리드셀) 간의 간격 설정 */
+            padding: 10px;  /* 그리드 컨테이너의 안쪽 여백 설정 */
+            height: 100vh;  /* 컨테이너의 높이를 화면 전체 높이로 맞춰서 설정 */
+        }
+
+        .grid-item {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .grid-item:nth-child(3n) {
+            background-color: #a2049d;
+        }
+
+        /* 12개의 컬럼을 1fr 단위로 나누어서 사용 */
+        .col-span-1 {
+            grid-column: span 1; /* 1개의 컬럼을 차지 */
+        }
+
+        .col-span-2 {
+            grid-column: span 2;    /* 2개의 컬럼을 차지 */
+        }
+
+        .col-span-3 {
+            grid-column: span 3;
+        }
+
+        /* 3개의 컬럼을 차지 */
+        .col-span-4 {
+            grid-column: span 4;
+        }
+
+        .col-span-5 {
+            grid-column: span 5;
+        }
+
+        .col-span-6 {
+            grid-column: span 6;
+        }
+
+        .col-span-7 {
+            grid-column: span 7;
+        }
+
+        .col-span-8 {
+            grid-column: span 8;
+        }
+
+        .col-span-9 {
+            grid-column: span 9;
+        }
+
+        .col-span-10 {
+            grid-column: span 10;
+        }
+
+        .col-span-11 {
+            grid-column: span 11;
+        }
+
+        .col-span-12 {
+            grid-column: span 12;   /* 12개의 컬럼을 차지 */
+        }
+
+        /****************************************/
+        /* 헤더 부분                            */
+        /****************************************/
+        header { /* header : 선택자 즉, 태그 */
+            grid-area: header;  /* 그리드 영역에서 header 설정 */
+            background-color: #066cfa;
+            display: flex; /* 플렉스 컨터이너-하위 요소들을 가로,세로로 편리하게 정렬(가로) */
+            justify-content: center; /* 추가/수정 가로 중앙정렬 */
+            align-items: center;    /* 세로 중앙정렬, 수직정렬 */
+            padding: 10px 20px;
+        }
+        .header-content{
+            display: flex; /* 플렉스 컨테이너 설정 */
+            justify-content: space-between; /* 자식 요소들의 간격을 균등하게 배치 */
+            align-items: center;
+            width: 100%;
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+        }
+        .logo h2{
+            margin: 0;
+            font-size: 2em;
+            color: white;
+        }
+        .logo a{
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+        .logo img{
+            height: 50px;
+            margin-right: 10px;
+        }
+        .menu{
+            display: flex;
+            justify-content: center;
+            flex: 1; /* 남은 공간을 모두 차지 */
+        }
+
+        /* 주석 */
+        /* nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            background-color: transparent;
+            transition: background-color 0.5s;
+            border-radius: 3px;
+        }
+
+        nav ul li a:hover {
+            background-color: #5e055b;
+        }
+
+        /* 소셜 로그인 */
+        .social-icons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: auto;
+        }
+        .social-icons a {
+            color: white;
+            margin-left: 10px;
+            font-size: 1.5em;
+        }
+        /* 헤더끝 */
+
+        /****************************************/
+        /* 슬라이드 부분                         */
+        /****************************************/
+        .slide{
+            grid-area: slide;
+            background-color: orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;   /* 부모 요소의 영역을 벗어나는 자식 요소를 숨김 */
+        }
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+        }
+        .slideshow-container img {
+            width: 100%; /* 이미지 넓이를 부모 영역의 100%로 설정 */
+            height: 100%;   /* 이미지 높이를 부모 영역의 100%로 설정 */
+            object-fit: cover; /* 이미지의 비율을 유지하면서 부모 요소에 꽉 차게 설정 */
+        }
+        .mySlides {
+            /* 처음에는 안보이게 설정, 나중에 자바스크립트로 보이게 설정 */
+            display: none;   /* 요소 안보이게 처리 */
+            height: 100%;   /* 이미지 높이를 부모 영역의 100%로 설정 */
+        }
+        .fade{
+            animation-name: fade; /* 애니메이션 이름 설정 */
+            animation-duration: 1.5s;   /* 애니메이션 지속시간 설정 */
+        }
+
+        /****************************************/
+        /* main 부분                            */
+        /****************************************/
+
+        main {
+            grid-area: main;
+            display: flex;
+            flex-direction: column; /* 컬럼 방향으로 정렬 */
+            justify-content: flex-start;    /* 컬럼 시작점에 정렬 */
+            align-items: flex-start;    /* 컬럼 시작점에 정렬 */
+            text-align: left;   /* 텍스트 정렬을 왼쪽으로 설정 */
+            gap: 10px;
+            background-color: #ffd800;
+            color: black;
+            padding: 20px;
+        }
+        #tabMenu{
+            width: 100%;
+        }
+        #tabMenu label{
+            /* label은 원래 inline 요소이므로 block 요소로 변경 */
+            display: inline-block;
+            margin: 0;
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+            border-radius: 5px 5px 0 0;
+        }
+        /* input 요소가 체크되면 label 요소의 색상을 변경 
+           + label은 요소의 인접한 형제인 label요소를 선택하여 적용 */
+        #tabMenu input:checked + label{
+            color: red;
+            border: 1px solid white;
+            background-color: white;
+        }
+        .tabConent{
+            display: none;  /* 처음에는 안보이게 설정 */
+            padding: 20px 0 0;
+            border-top: 1px solid white;
+            width: 100%;
+        }
+        .tabConent h2{
+            display: none;
+        }
+        /* tab1이 체크되면 notice 요소를 보이게 설정 
+           tab2가 체크되면 gallery 요소를 보이게 설정 
+           ~ 틸드는 선택자의 인접한 형제 요소를 모두 선택 */
+        #tab1:checked ~ #notice,
+        #tab2:checked ~ #gallery{
+            display: block; /* 선택된 input 요소의 인접한 형제 요소를 보이게 설정 */
+        }
+        #notice ul{
+            list-style: disc;   /* 목록의 모양(블릿)을 원형으로 설정 */
+            padding-left: 10px; /* 목록의 들여쓰기를 설정, 왼쪽에 공간 확보 */
+            margin-left: 0px;   /* 목록의 왼쪽 여백을 없앰 */
+            text-align: left;   /* 공지사항이 왼쪽 정렬 */
+        }
+        #notice ul li{
+            padding-left: 20px; /* 목록의 들여쓰기를 설정, 왼쪽에 공간 확보 */
+            font-size: 1.2em;   /* 글자 크기를 1.2em으로 설정 즉, 부모 요소의 1.2배 */
+            line-height: 1.5em; /* 줄간격을 1.5em으로 설정 즉, 부모 요소의 1.5배 */
+            margin-bottom: 10px;    /* 목록 간격을 10px로 설정 */
+        }
+        /* 갤러리 */
+        .gallery-grid{
+            display: grid;
+            /* 3개의 컬럼을 1fr 단위로 나누어서 사용 */
+            grid-template-columns: repeat(3, 1fr); 
+            /* 2개의 로우를 100px 단위로 나누어서 사용 */
+            grid-template-rows: repeat(2, 100px);
+            gap: 10px;
+            padding: 0px;
+            /*list-style: none; /* 목록의 모양을 없앰 */
+        }
+        .gallery-grid li{
+            list-style: none; /* 목록의 모양을 없앰 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .gallery-grid img{
+            width: 100%;    /* 이미지 넓이를 부모 요소의 100%로 설정 */
+            height: 100%;
+            object-fit: cover;  /* 이미지의 비율을 유지하면서 부모 요소에 꽉 차게 설정 */
+            display: block; /* 이미지를 블록 요소로 설정 */
+        }
+
+        /****************************************/
+        /* aside 부분                            */
+        /****************************************/
+        aside {
+            grid-area: aside;
+            display: flex;
+            background-color: #066cfa;
+            color: black;
+            display: flex;
+            justify-content: space-around; /* 요소들을 균등하게 배치 */
+            align-items: center;
+            padding: 20px;
+        }
+
+        .aside-item {
+            display: flex;
+            flex-direction: column; /* 컬럼 방향으로 정렬 */
+            align-items: center;
+            text-align: center;
+        }
+
+        .aside-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover; /* 이미지의 비율을 유지하면서 부모 요소에 꽉 차게 설정 */
+            margin-bottom: 0px;
+            border-radius: 30%; /* 이미지를 둥글게 처리 */
+        }
+        .aside-item p {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        /****************************************/
+        /* footer 부분                           */
+        /****************************************/
+        footer {
+            grid-area: footer;
+            background-color: #066cfa;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .footer-content {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- 헤더 영역 -->
+        <header class="grid-item col-span-12">
+            <div class="header-content">
+                <div class="logo">
+                  <a href="index.html">
+                    <img src="./images/jeju-logo.png" alt="Logo">
+                    <h2>제주도</h2>
+                  </a>
+                </div>
+                <nav class="menu">
+                  <ul>
+                    <li><a href="index.html">메뉴1</a></li>
+                    <li><a href="#">메뉴2</a></li>
+                    <li><a href="#">메뉴3</a></li>
+                    <li><a href="#">메뉴4</a></li>
+                    <li><a href="#">메뉴5</a></li>
+                    <li><a href="#">메뉴6</a></li>
+                    <li><a href="#">메뉴7</a></li>
+                  </ul>
+                </nav>  
+                <div class="social-icons">
+                    <a href="#" title="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="instagram"><i class="fab fa-instagram"></i></a>
+                </div>              
+            </div>
+        </header>
+        <!-- 슬라이드 영역 -->
+        <section class="grid-item col-span-12 slide">
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <img src="./images/slide01.png" alt="슬라이드1">
+                </div>
+                <div class="mySlides">
+                    <img src="./images/slide02.png" alt="슬라이드2">
+                </div>                
+                <div class="mySlides">
+                    <img src="./images/slide03.png" alt="슬라이드3">
+                </div>
+                <div class="mySlides">
+                    <img src="./images/slide04.png" alt="슬라이드4">
+                </div>                                
+            </div>
+        </section>
+        <!-- 메인 영역 -->
+        <main class="grid-item">
+            <div id="tabMenu">
+                <label for="tab1">공지사항</label>
+                <input type="radio" name="tabs" id="tab1" checked>
+                <label for="tab2">갤러리</label>
+                <input type="radio" name="tabs" id="tab2">
+                <div id="notice" class="tabConent">
+                    <h2>공지사항 입니다</h2>
+                    <ul>
+                        <li>사무실을 이전했습니다.</li>
+                        <li>[참가모집] 카약 체험에 초대합니다.</li>
+                        <li>[참가모집] 여름 방학 기간, 오름 체험단을 모집합니다.</li>
+                        <li>20,30대 겨울, 추천 여행지로 제주도가 일순위로 뽑혔어요.</li>
+                        <li>제주도에는 유네스코 세계 자연 유산으로 지정된 장소가 있다.</li>
+                    </ul>
+                </div>
+                <div id="gallery" class="tabConent">
+                    <h2>갤러리 내용입니다</h2>
+                    <ul class="gallery-grid">
+                        <li><img src="./images/img-01.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-02.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-03.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-04.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-05.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-06.png" alt="갤러리1"></li>
+                    </ul>
+                </div>                
+                
+            </div>
+            
+        </main>
+        <!-- aside 영역 -->
+        <aside class="grid-item">
+            <div class="aside-item">
+                <a href="index.html">
+                    <img src="./images/aside01.png" alt="맛기행">
+                </a>
+                <p>맛기행</p>
+            </div>
+            <div class="aside-item">
+                <a href="index.html">
+                    <img src="./images/aside02.png" alt="힐링워크숍">
+                </a>
+                <p>힐링워크숍</p>
+            </div>
+            <div class="aside-item">
+                <a href="index.html">
+                    <img src="./images/aside03.png" alt="즐거움">
+                </a>
+                <p>즐거움</p>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        /*
+            이미지 슬라이드 처리 자바스크립트
+        */
+        let slideIndex = 0;
+        showSlides(); // 슬라이드 처리 함수 호출
+
+        function showSlides(){
+            let slides = document.querySelectorAll('.mySlides'); // 슬라이드 이미지들을 모두 가져옴
+            for(let i = 0; i < slides.length; i++){
+                slides[i].style.display = 'none'; // 모든 슬라이드 이미지를 안보이게 처리
+            }
+            slideIndex++; // 다음 슬라이드 이미지로 이동
+            if(slideIndex > slides.length){
+                slideIndex = 1; // 마지막 슬라이드 이미지 이후에는 첫번째 슬라이드 이미지로 이동
+            }
+            slides[slideIndex - 1].style.display = 'block'; // 현재 슬라이드 이미지를 보이게 처리
+            setTimeout(showSlides, 2000); // 2초마다 슬라이드 이미지 변경
+        }
+    </script>
+
+</body>
+</html>

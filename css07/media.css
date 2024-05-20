@@ -1,0 +1,116 @@
+/* media.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    /* 박스 모델의 크기를 계산할 때 테두리와 안쪽 여백을 포함 */
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #029af8;
+    /* 배경색 */
+}
+
+.container {
+    width: 320px;
+    margin: 50px auto;
+    /* 위아래-50px, 좌우는 자동(가운데정렬)*/
+}
+
+.card {
+    /* card 요소는 원래의 배치를 유지하면서 텍스트를 상대적으로 좌표값을 이용해 배치 */
+    position: relative;
+    width: 300px;
+    height: 500px;
+    margin: 20px 10px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.words {
+    /* card 요소 내부의 words 요소는 card 요소를 기준으로 배치 
+               이 때 words의 위치는 card의 왼쪽 윗 모서리를 기준으로 함.*/
+    position: absolute;
+    left: 10px;
+    /* card의 왼쪽에서 10px 떨어진 위치 */
+    top: 300px;
+    /* card의 위쪽에서 300px 떨어진 위치 */
+    padding: 10px;
+    text-align: center;
+}
+
+/* 미디어쿼리
+           화면의 최소 넓이가 768 이상이고 1719 이하일때 적용되는 스타일 */
+@media screen and (min-width: 768px) and (max-width: 1719px) {
+    .container {
+        /* container 요소의 스타일을 변경 */
+        width: 570px;
+        /* container 요소의 넓이를 570px로 변경 */
+        margin: 50px auto;
+        /* 위아래-50px, 좌우는 자동(가운데정렬)*/
+    }
+
+    /* card 요소의 위치, 너비, 높이, 마진, 테두리, 배경색을 지정 */
+    .card {
+        /* card 요소는 원래의 배치를 유지하면서 텍스트를 상대적으로 좌표값을 이용해 배치
+                   container로부터 상대적으로 지정된다. */
+        position: relative;
+        width: 550px;
+        height: 250px;
+        margin: 20px 10px;
+        border: 1px solid black;
+        background-color: white;
+    }
+
+    /* card 안에서 텍스트 위치를 지정 */
+    .words {
+        /* card 요소 내부의 words 요소는 card 요소를 기준으로 배치 
+                   이 때 words의 위치는 card의 왼쪽 윗 모서리를 기준으로 함.
+                   absolute는 기준 배치를 무시하고 지정한 위치에 배치 */
+        position: absolute;
+        width: 200px;
+        left: 310px;
+        /* card의 왼쪽에서 10px 떨어진 위치 */
+        top: 50px;
+        /* card의 위쪽에서 300px 떨어진 위치 */
+        text-align: center;
+    }
+}
+
+/* end of media query */
+
+/* 미디어쿼리
+           화면의 최소 넓이가 1720 이상일때 적용되는 스타일 */
+@media screen and (min-width: 1720px) {
+    .container {
+        width: 1710px;
+        margin: 50px auto;
+        /* 위아래-50px, 좌우는 자동(가운데정렬)*/
+    }
+
+    .card {
+        /* card 요소는 원래의 배치를 유지하면서 텍스트를 상대적으로 좌표값을 이용해 배치 */
+        position: relative;
+        float: left;
+        /* 왼쪽 정렬 */
+        width: 550px;
+        height: 250px;
+        margin: 20px, 10px;
+        /* 위아래 20px, 좌우 10px */
+        border: 1px solid black;
+        background-color: white;
+    }
+
+    .words {
+        /* card 요소 내부의 words 요소는 card 요소를 기준으로 배치 
+               이 때 words의 위치는 card의 왼쪽 윗 모서리를 기준으로 함.*/
+        position: absolute;
+        width: 200px;
+        left: 310px;
+        /* card의 왼쪽에서 10px 떨어진 위치 */
+        top: 50px;
+        /* card의 위쪽에서 300px 떨어진 위치 */
+        text-align: center;
+    }
+}
