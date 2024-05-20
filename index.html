@@ -1,41 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>미디어쿼리</title>
-    <link rel="stylesheet" href="./media.css"> <!-- 외부 스타일 시트 적용 -->
+    <title>CSS Grid Layout 미디어쿼리 적용후</title>
+    <!-- Font Awesome CSS 파일 포함 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS 파일 포함 -->
+    <link rel="stylesheet" href="./media.css">
     <style>
-    
     </style>
 </head>
 
 <body>
-    <h2>미디어쿼리를 통한 화면 조정</h2>
-    <div class="container">
-        <div class="card">
-            <img src="../images/mq1.png" alt="이미지1">
-            <div class="words">
-                <h2>일 분 전만큼 먼 시간은 없다.</h2>
-                <h3> - Jim Bishop</h3>
+    <div class="grid-container">
+        <!-- 헤더 영역 -->
+        <header class="grid-item col-span-12">
+            <div class="header-content">
+                <div class="logo">
+                  <a href="index.html">
+                    <img src="./images/jeju-logo.png" alt="Logo">
+                    <h2>제주도</h2>
+                  </a>
+                </div>
+                <nav class="menu">
+                  <ul>
+                    <li><a href="index.html">메뉴1</a></li>
+                    <li><a href="#">메뉴2</a></li>
+                    <li><a href="#">메뉴3</a></li>
+                    <li><a href="#">메뉴4</a></li>
+                    <li><a href="#">메뉴5</a></li>
+                    <li><a href="#">메뉴6</a></li>
+                    <li><a href="#">메뉴7</a></li>
+                  </ul>
+                </nav>  
+                <div class="social-icons">
+                    <a href="#" title="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="instagram"><i class="fab fa-instagram"></i></a>
+                </div>              
             </div>
-        </div>
-        <div class="card">
-            <img src="../images/mq2.png" alt="이미지2">
-            <div class="words">
-                <h2>시간은 금이다.</h2>
-                <h3> - Benjamin Franklin</h3>
+        </header>
+        <!-- 슬라이드 영역 -->
+        <section class="grid-item col-span-12 slide">
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <img src="./images/slide01.png" alt="슬라이드1">
+                </div>
+                <div class="mySlides">
+                    <img src="./images/slide02.png" alt="슬라이드2">
+                </div>                
+                <div class="mySlides">
+                    <img src="./images/slide03.png" alt="슬라이드3">
+                </div>
+                <div class="mySlides">
+                    <img src="./images/slide04.png" alt="슬라이드4">
+                </div>                                
             </div>
-        </div>
-        <div class="card">
-            <img src="../images/mq3.png" alt="이미지3">
-            <div class="words">
-                <h2>낡은 옷은 그냥 입고 새 책을 사라.</h2>
-                <h3> - Austin phelps</h3>
+        </section>
+        <!-- 메인 영역 -->
+        <main class="grid-item">
+            <div id="tabMenu">
+                <label for="tab1">공지사항</label>
+                <input type="radio" name="tabs" id="tab1" checked>
+                <label for="tab2">갤러리</label>
+                <input type="radio" name="tabs" id="tab2">
+                <div id="notice" class="tabConent">
+                    <h2>공지사항 입니다</h2>
+                    <ul>
+                        <li>사무실을 이전했습니다.</li>
+                        <li>[참가모집] 카약 체험에 초대합니다.</li>
+                        <li>[참가모집] 여름 방학 기간, 오름 체험단을 모집합니다.</li>
+                        <li>20,30대 겨울, 추천 여행지로 제주도가 일순위로 뽑혔어요.</li>
+                        <li>제주도에는 유네스코 세계 자연 유산으로 지정된 장소가 있다.</li>
+                    </ul>
+                </div>
+                <div id="gallery" class="tabConent">
+                    <h2>갤러리 내용입니다</h2>
+                    <ul class="gallery-grid">
+                        <li><img src="./images/img-01.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-02.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-03.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-04.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-05.png" alt="갤러리1"></li>
+                        <li><img src="./images/img-06.png" alt="갤러리1"></li>
+                    </ul>
+                </div>                
+                
             </div>
-        </div>
+            
+        </main>
+        <!-- aside 영역 -->
+        <aside class="grid-item">
+            <div class="aside-item">
+                <a href="index.html">
+                    <img src="./images/aside01.png" alt="맛기행">
+                </a>
+                <p>맛기행</p>
+            </div>
+            <div class="aside-item">
+                <a href="index.html">
+                    <img src="./images/aside02.png" alt="힐링워크숍">
+                </a>
+                <p>힐링워크숍</p>
+            </div>
+            <div class="aside-item">
+                <a href="index.html">
+                    <img src="./images/aside03.png" alt="즐거움">
+                </a>
+                <p>즐거움</p>
+            </div>
+        </aside>
+        <!-- footer 영역 -->
+        <footer class="grid-item">
+            <div class="footer-content">
+                <p>Email: <a href="mailto:whalswo412@gmail.com">whalswo412@gmail.com</a></p>
+                <p>@2024 Jeju Island. All rights reserved</p>
+            </div>
+        </footer>
+        
     </div>
-</body>
 
+    <script>
+        /*
+            이미지 슬라이드 처리 자바스크립트
+        */
+        let slideIndex = 0;
+        showSlides(); // 슬라이드 처리 함수 호출
+
+        function showSlides(){
+            let slides = document.querySelectorAll('.mySlides'); // 슬라이드 이미지들을 모두 가져옴
+            for(let i = 0; i < slides.length; i++){
+                slides[i].style.display = 'none'; // 모든 슬라이드 이미지를 안보이게 처리
+            }
+            slideIndex++; // 다음 슬라이드 이미지로 이동
+            if(slideIndex > slides.length){
+                slideIndex = 1; // 마지막 슬라이드 이미지 이후에는 첫번째 슬라이드 이미지로 이동
+            }
+            slides[slideIndex - 1].style.display = 'block'; // 현재 슬라이드 이미지를 보이게 처리
+            setTimeout(showSlides, 2000); // 2초마다 슬라이드 이미지 변경
+        }
+    </script>
+
+</body>
 </html>
